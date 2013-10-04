@@ -1,0 +1,30 @@
+{
+    "name": "blindify",
+    "title": "Blindify",
+    "description": "Blindify is a jQuery plugin which creates a slideshow featuring a blinds effect transitioning (either vertical or horizontal) between a list of images.",
+    "keywords": [
+        "slideshow",
+        "animation",
+        "transition",
+        "effect",
+        "blinds",
+        "image",
+        "photo"
+    ],
+    "version": "0.1.0",
+    "author": {
+        "name": "Stathis Goudoulakis",
+        "email" : "me@stathisg.com",
+        "url": "http://stathisg.com/"
+    },
+    "licenses": [
+        {
+            "type": "MIT license (MIT)",
+            "url": "http://opensource.org/licenses/MIT"
+        }
+    ],
+    "dependencies": {
+        "jquery": ">=1.4"
+    },
+    "demo": "http://burnmind.com/demos/blindify"
+}
