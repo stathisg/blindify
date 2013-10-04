@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Blindify jQuery plugin - vertical demo #2</title>
+    <meta name="description" content="Blindify jQuery plugin - vertical demo #2" />
+    <link rel="stylesheet" href="../blindify.min.css" media="all" />
+    <link rel="stylesheet" href="demo.css" media="all" />
+    <link href='http://fonts.googleapis.com/css?family=Alex+Brush' rel='stylesheet' type='text/css'>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="../jquery.blindify.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#blindify').blindify({
+                numberOfBlinds: 15,
+                margin: 5,
+                gapHeight: 200,
+                animationSpeed: 500
+            });
+        });
+	</script>
+</head>
+<body>
+    <article class="container">
+        <h1>Blindify</h1>
+        <nav class="top">
+            <ul>
+                <li><a href="vertical_1.html">Vertical 1</a></li>
+                <li><a href="vertical_2.html" class="active">Vertical 2</a></li>
+                <li><a href="horizontal_1.html">Horizontal 1</a></li>
+                <li><a href="horizontal_2.html">Horizontal 2</a></li>
+            </ul>
+        </nav>
+        <section id="blindify">
+            <ul>
+                <li><img src="images/photo_1.jpg" alt="" /></li>
+                <li><img src="images/photo_2.jpg" alt="" /></li>
+                <li><img src="images/photo_3.jpg" alt="" /></li>
+                <li><img src="images/photo_4.jpg" alt="" /></li>
+            </ul>
+        </section>
+        <nav class="bottom">
+            <ul>
+                <li><a href="https://github.com/stathisg/blindify">View on GitHub</a></li>
+                <li><a href="http://burnmind.com/tutorials/blinds-transition-slideshow-jquery">Based on this tutorial</a></li>
+            </ul>
+        </nav>
+        <footer>
+            Photos by <a href="http://www.flickr.com/photos/stephenwalford/">Stephen Walford</a>, <a href="http://www.flickr.com/photos/thomas-riecken/">Thomas Riecken</a>, and <a href="http://www.flickr.com/photos/trucka26/">Ben</a>.
+        </footer>
+    </article>
+</body>
+</html>

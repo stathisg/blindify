@@ -1,0 +1,6 @@
+.blindify{display:block;position:relative;overflow:hidden}
+.blindify a{display:block}
+.blindify span{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;position:absolute}
+.blindify ul,.blindify li{padding:0;margin:0;list-style:none}
+.blindify li{display:none}
+.blindify li.active{display:inline}

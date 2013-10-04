@@ -1,0 +1,87 @@
+body
+{
+    background-color: #000;
+    color: #e7f2f8;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 1em;
+}
+
+h1
+{
+    font-family: 'Alex Brush', cursive;
+    text-shadow: 0px 0px 10px #fff;
+    font-size: 5em;
+    text-align: center;
+}
+
+nav.top
+{
+    text-align: center;
+    margin-top: -2em;
+    margin-bottom: 4em;
+}
+
+nav.bottom
+{
+    text-align: center;
+    margin-top: 5em;
+    margin-bottom: 5em;
+}
+
+ul
+{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+li
+{
+    display: inline;
+    margin: 0 1%;
+}
+
+a
+{
+    color: #0CC5DA;
+    text-decoration: none;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+a:hover, a.active
+{
+    color: #DCE808;
+}
+
+nav.top a, nav.bottom a
+{
+    background-color: #343435;
+    padding: 0.5% 1%;
+}
+
+nav.top a:hover, nav.bottom a:hover
+{
+    background-color: #1e1e1e;
+}
+
+nav.bottom a
+{
+    font-size: 1.3em;
+}
+
+footer
+{
+    color: #cfcfcf;
+    font-size: 0.9em;
+    text-align: center;
+    margin-bottom: 2em;
+}
+
+.container
+{
+    margin: 0 auto;
+    width: 960px;
+}
