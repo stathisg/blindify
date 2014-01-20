@@ -1,8 +1,8 @@
 /*!
- * Blindify - jQuery Plugin - v0.1
+ * Blindify - jQuery Plugin - v0.2.0
  * https://github.com/stathisg/blindify
  *
- * Copyright 2013 Stathis Goudoulakis
+ * Copyright 2014 Stathis Goudoulakis
  * Released under the MIT license
  */
  (function($){
@@ -23,7 +23,9 @@
         animationSpeed: 800,
         delayBetweenSlides: 500,
         hasLinks: false,
-        orientation: 'vertical'
+        orientation: 'vertical',
+        startClosed: false,
+        firstOpenDelay: 500
     };
 
     options = {};
@@ -71,7 +73,16 @@
 
         for (var i = 0; i < options.numberOfBlinds; i++) {
             var tempEl = $(document.createElement('span'));
-            var borders = calculateBorders();
+            var borders;
+            if(options.startClosed) {
+                if(options.orientation === 'vertical') {
+                    borders = {borderWidthTop: options.height / 2, borderWidthBottom: options.height / 2};
+                } else {
+                    borders = {borderWidthTop: options.width / 2, borderWidthBottom: options.width / 2};
+                }
+            } else {
+                borders = calculateBorders();
+            }
 
             if(options.orientation === 'vertical') {
                 tempEl.css({
@@ -97,6 +108,18 @@
         };
 
         blinds = $('span', el);
+
+        if(options.startClosed) {
+            $el.delay(options.firstOpenDelay).queue(function(next) {
+                $.each(blinds, function(index, value) {
+                    var borders = calculateBorders();
+                    var animationProperties = getAnimationProperties(borders);
+                    $(value).animate(animationProperties, options.animationSpeed);
+                });
+                next();
+            });
+        }
+
         $el.delay(options.slideVisibleTime).queue(function(next) {
             animateBorders();
             next();
@@ -111,21 +134,42 @@
         return {borderWidthTop: borderWidthTop, borderWidthBottom: borderWidthBottom};
     }
 
-    function animateBorders() {
-        var changeOccuredOnce = false;
-        var animationProperties = null
+    function getAnimationProperties(borders)
+    {
+        var animationProperties;
 
         if(options.orientation === 'vertical') {
-            animationProperties = {
-                borderTopWidth: options.height / 2,
-                borderBottomWidth: options.height / 2
-            };
+            if(borders === null) {
+                animationProperties = {
+                    borderTopWidth: options.height / 2,
+                    borderBottomWidth: options.height / 2
+                };
+            } else {
+                animationProperties = {
+                    borderTopWidth: borders.borderWidthTop,
+                    borderBottomWidth: borders.borderWidthBottom
+                };
+            }
         } else {
-            animationProperties = {
-                borderRightWidth: options.width / 2,
-                borderLeftWidth: options.width / 2
-            };
+            if(borders === null) {
+                animationProperties = {
+                    borderRightWidth: options.width / 2,
+                    borderLeftWidth: options.width / 2
+                };
+            } else {
+                animationProperties = {
+                    borderRightWidth: borders.borderWidthTop,
+                    borderLeftWidth: borders.borderWidthBottom
+                };
+            }
         }
+
+        return animationProperties;
+    }
+
+    function animateBorders() {
+        var changeOccuredOnce = false;
+        var animationProperties = getAnimationProperties(null);
 
         blinds.animate(animationProperties, options.animationSpeed, function() {
             if(!changeOccuredOnce) {
@@ -140,18 +184,7 @@
             }
 
             var borders = calculateBorders();
-
-            if(options.orientation === 'vertical') {
-                animationProperties = {
-                    borderTopWidth: borders.borderWidthTop,
-                    borderBottomWidth: borders.borderWidthBottom
-                };
-            } else {
-                animationProperties = {
-                    borderRightWidth: borders.borderWidthTop,
-                    borderLeftWidth: borders.borderWidthBottom
-                };
-            }
+            animationProperties = getAnimationProperties(borders);
 
             $(this).delay(options.delayBetweenSlides).animate(animationProperties, options.animationSpeed);
         });

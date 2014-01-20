@@ -127,3 +127,9 @@ Set to `true`, when there are individual links for every image.
 
 `orientation` (string) — *default: 'vertical'*  
 The orientation of the blinds; it can be either `vertical` or `horizontal`.
+
+`startClosed` (boolean) — *default: false*  
+Set to `true` to start with the blinds closed.
+
+`firstOpenDelay` (integer) — *default: 500*  
+Controls the delay before the blinds are opened for the first time, when `startClosed` is set to `true`; in milliseconds (ms).
